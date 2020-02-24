@@ -4,40 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-// class Siwa {
-//   static Siwa _instance;
-//   static get instance => getInstance();
-//   static getInstance() {
-//     if (_instance == null) {
-//       _instance = new Siwa._();
-//     }
-//     return _instance;
-//   }
-
-//   static MethodChannel _channel;
-//   Siwa._() {
-//     _channel = const MethodChannel('cc.dync/siwa')
-//       ..setMethodCallHandler(_handler);
-//   }
-
-//   Future<dynamic> _handler(MethodCall methodCall) {
-//     print(methodCall);
-//     return Future.value(true);
-//   }
-
-//   Future<String> get platformVersion async {
-//     final String version = await _channel.invokeMethod('getPlatformVersion');
-//     return version;
-//   }
-
-//   Future<String> get signInWithApple async {
-//     final siwa = await _channel.invokeMethod('SignInWithApple');
-//     print(siwa);
-//     return siwa;
-//   }
-// }
-
 const String viewType = "plugins/siwa";
+
 class SignInWithApple extends StatefulWidget {
   SignInWithApple({Key key, this.onCreated}) : super(key: key);
   final SignInWithAppleOnCreated onCreated;
@@ -50,17 +18,19 @@ class _SignInWithAppleState extends State<SignInWithApple> {
   @override
   Widget build(BuildContext context) {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
-      return GestureDetector(onTap: (){
-        print("asdfad");
-      },child:
-      UiKitView(
-        viewType: viewType,
-        onPlatformViewCreated: _onPlatformViewCreated,
-        creationParams: <String, dynamic>{
-          "hidesWhenStopped": true,
+      return GestureDetector(
+        onTap: () {
+          print("asdfad");
         },
-        creationParamsCodec: new StandardMessageCodec(),
-      ),);
+        child: UiKitView(
+          viewType: viewType,
+          onPlatformViewCreated: _onPlatformViewCreated,
+          creationParams: <String, dynamic>{
+            "hidesWhenStopped": true,
+          },
+          creationParamsCodec: new StandardMessageCodec(),
+        ),
+      );
     }
     return Text('苹果登录插件尚不支持$defaultTargetPlatform ');
   }
@@ -89,7 +59,8 @@ class SignInWithAppleController {
       case "auth":
         click(methodCall);
         break;
-      default: break;
+      default:
+        break;
     }
     return Future.value(true);
   }

@@ -1,6 +1,6 @@
 name: siwa
-description: sign in with apple.
-version: 0.1.1
+description: sign in with apple. Apple login plugin for three-party login.
+version: 0.1.2
 homepage: https://github.com/jeromexiong/flutter-siwa
 
 environment:

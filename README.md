@@ -1,4 +1,5 @@
 # siwa
+[![pub package](https://img.shields.io/pub/v/siwa.svg)](https://pub.dartlang.org/packages/siwa)
 
 A new sign in with apple.
 
@@ -10,7 +11,7 @@ sign in with apple for flutter
 ## Getting Started
 
 1. info.plist
-```
+```xml
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 ```
